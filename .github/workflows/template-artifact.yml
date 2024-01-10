@@ -1,0 +1,27 @@
+name: Create and Upload Artifact
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Print Runner Hostname and IP
+      run: |
+        echo "Runner Hostname: $(hostname)"
+        curl http://ipinfo.io/ip
+
+    - name: Create cert.txt
+      run: echo "Certificate Content" > cert.txt
+
+    - name: Zip the cert.txt
+      run: zip cert.zip cert.txt
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: cert.zip
+        path: cert.zip
