@@ -1,8 +1,7 @@
-name: Create and Upload Artifact
+name: template-artifact
 
 on:
-  push:
-  workflow_dispatch:
+  workflow_call
 
 jobs:
   build:
