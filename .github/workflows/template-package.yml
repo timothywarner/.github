@@ -1,6 +1,8 @@
 name: template-package
 
-on: workflow_call
+on:
+  push:
+  workflow_call:
 
 jobs:
   package-and-upload:
