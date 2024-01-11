@@ -21,7 +21,7 @@ jobs:
           mkdir hello_world_package
           echo "def hello():\n    print('Hello, world!')" > hello_world_package/__init__.py
           echo "[metadata]\nname = hello_world_package\nversion = 0.0.1" > setup.cfg
-          echo "from setuptools import setup\nsetup()" > setup.py
+          echo "from setuptools import setup; setup()" > setup.py
 
       - name: Build package
         run: |
