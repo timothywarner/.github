@@ -1,4 +1,4 @@
-name: template-package-v2
+name: Publish Python Package
 
 on:
   push:
@@ -26,9 +26,10 @@ jobs:
         run: |
           python setup.py sdist bdist_wheel
 
-      - name: Publish package
+      - name: Publish package to GitHub Packages
         env:
-          TWINE_USERNAME: __token__
+          TWINE_USERNAME: ${{ github.actor }}
           TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python -m twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
+          python -m twine upload --repository-url https://pypi.pkg.github.com/timothywarner dist/*
